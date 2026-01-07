@@ -10,4 +10,9 @@ def init_state():
 
 
 def display_rules():
-    print()
+    print("Rock–Paper–Scissors–Plus")
+    print("Best of 3 rounds.")
+    print("Moves: rock, paper, scissors.")
+    print("You may use bomb once; it beats all moves.")
+    print("Invalid moves waste the round.")
+    
