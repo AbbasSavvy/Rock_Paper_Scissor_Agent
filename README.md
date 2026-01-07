@@ -1,7 +1,5 @@
 # Rock-Paper-Scissors-Plus - Design Overview
 
-# Rock–Paper–Scissors–Plus — Design Overview
-
 ## Table of Contents
 
 - [State Model](#state-model)
