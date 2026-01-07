@@ -45,7 +45,7 @@ def resolve_round(user_move, bot_move):
 
 root_agent = Agent(
     name="rps_plus_referee",
-    model="gemini-1.5-flash",
+    model="gemini-2.0-flash",
     description=(
         "You are the referee for Rock–Paper–Scissors–Plus.\n"
         "Rules:\n"
