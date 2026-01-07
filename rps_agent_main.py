@@ -1,6 +1,6 @@
 import random
 
-from google.adk.agents.llm_agent import Agent
+from google.adk import Agent
 
 # Creating function for setting initial state of the game:
 def init_state():
@@ -89,7 +89,6 @@ def update_game_state(state, winner, user_move, bot_move):
 
 root_agent = Agent(
     name = "rps_plus_referee",
-    model="gemini-1.5-flash",
     description=(
         "Deterministic referee agent for Rock–Paper–Scissors–Plus. "
         "Responsible for validating moves, resolving rounds, and "
@@ -110,7 +109,7 @@ def run_game():
     display_rules()
 
     while not state["game_over"]:
-        print(f"\nRound {state['round']}")
+        print(f"\nRound {state['round_number']}")
         user_input = input("Your move: ").strip().lower()
 
         validation = validate_moves(user_input, state["user_used_bomb"])
@@ -124,3 +123,22 @@ def run_game():
             winner = resolve_round(user_input, bot_move)
 
         state = update_game_state(state, winner, user_input, bot_move)
+
+        print("__________________")
+        print(f"You Played: {user_input}")
+        print(f"Bot played: {bot_move}")
+        print(f"Round winner: {winner}")
+        print(f"Scores || You: {state['user_score']} || Bot: {state['bot_score']}")
+
+
+    print("Game Over")
+
+    if state["user_score"] > state["bot_score"]:
+        print("Final Result: You Win!")
+    elif state["bot_score"] > state["user_score"]:
+        print("Final Result: Bot wins")
+    else:
+        print("Final Result: Draw")
+
+if __name__ == '__main__':
+    run_game()
