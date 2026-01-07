@@ -44,3 +44,30 @@ With more time, the following enhancements would be made:
 
 - Allow the agent to drive the gameplay using structured JSON responses.
 - Add strategy-aware bot behavior.
+
+---
+
+## How to Run
+
+### Requirements
+- **Python 3**
+- Optional (only to satisfy the import statement):
+  ```bash
+  pip install google-adk
+  
+> **Note:** The game logic does not rely on any LLM at runtime. The pip dependency exists only for reference purposes of the import statement.
+
+### Steps
+
+1. Clone the repository
+2. Navigate to the directory containing `rps_agent_main.py`
+3. Run the game:
+   ```bash
+   python rps_agent_main.py
+4. Enter your move
+    - rock
+    - paper
+    - scissors
+    - bomb
+   
+The game runs for a maximum of 3 rounds and prints the final result at the end.
