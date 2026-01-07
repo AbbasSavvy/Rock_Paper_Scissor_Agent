@@ -1,5 +1,17 @@
 # Rock-Paper-Scissors-Plus - Design Overview
 
+# Rock–Paper–Scissors–Plus — Design Overview
+
+## Table of Contents
+
+- [State Model](#state-model)
+- [Agent / Tool Design](#agent--tool-design)
+- [Tradeoffs](#tradeoffs)
+- [Future Improvements](#future-improvements)
+- [How to Run](#how-to-run)
+
+
+
 ---
 
 ## State Model
