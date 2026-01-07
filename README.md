@@ -1,4 +1,6 @@
-# Rock–Paper–Scissors–Plus — Design Overview
+# Rock-Paper-Scissors-Plus - Design Overview
+
+---
 
 ## State Model
 The game uses a **single mutable state dictionary** to represent the entire game lifecycle.  
