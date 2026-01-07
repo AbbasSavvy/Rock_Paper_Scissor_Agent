@@ -9,6 +9,8 @@ def init_state():
         "game_over": False
     }
 
+    return init_dict
+
 
 def display_rules():
     print("Rock–Paper–Scissors–Plus")
@@ -16,6 +18,20 @@ def display_rules():
     print("Moves: rock, paper, scissors.")
     print("You may use bomb once; it beats all moves.")
     print("Invalid moves waste the round.")
+
+
+def validate_moves(user_move, bomb_used):
+    valid_moves = {"rock", "paper", "scissors", "bomb"}
+
+    if user_move not in valid_moves:
+        return {'move_valid': False, "reason": "User move is Invalid"}
+
+    if user_move == "bomb" and bomb_used:
+        return {"move_valid": False, "reason": "Bomb already used"}
+
+    return {"move_valid": True}
+
+
 
 
 
@@ -27,3 +43,4 @@ def run_game():
         print(f"\nRound {state['round']}")
         user_input = input("Your move: ").strip().lower()
 
+        validation = validate_moves(user_input, state["user_used_bomb"])
