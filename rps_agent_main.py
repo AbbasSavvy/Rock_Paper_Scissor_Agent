@@ -44,6 +44,30 @@ def choose_bot_move(bot_used_bomb):
     return random.choice(moves)
 
 
+def resolve_round(user_move, bot_move):
+    if user_move == bot_move:
+        return "draw"
+
+    if user_move == "bomb":
+        return "user"
+
+    if user_move == "bomb":
+        return "user"
+
+    what_beats_what = {
+        "rock": "scissors",
+        "scissors": "paper",
+        "paper": "rock"
+    }
+
+    if bot_move == what_beats_what[user_move]:
+        return "user"
+    else:
+        return "bot"
+
+
+
+
 
 def run_game():
     state = init_state()
@@ -59,3 +83,6 @@ def run_game():
             print(f"Invalid move: {validation['reason']}")
             bot_move = choose_bot_move(state["bot_used_bomb"])
             winner = "bot"
+        else:
+            bot_move = choose_bot_move(state["bot_used_bomb"])
+            winner = resolve_round(user_input, bot_move)
