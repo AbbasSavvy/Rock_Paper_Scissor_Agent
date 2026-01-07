@@ -5,7 +5,8 @@ def init_state():
         "user_score": 0,
         "bot_score": 0,
         "user_used_bomb": False,
-        "bot_used_bomb": False
+        "bot_used_bomb": False,
+        "game_over": False
     }
 
 
@@ -15,4 +16,14 @@ def display_rules():
     print("Moves: rock, paper, scissors.")
     print("You may use bomb once; it beats all moves.")
     print("Invalid moves waste the round.")
-    
+
+
+
+def run_game():
+    state = init_state()
+    display_rules()
+
+    while not state["game_over"]:
+        print(f"\nRound {state['round']}")
+        user_input = input("Your move: ").strip().lower()
+
