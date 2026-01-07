@@ -8,7 +8,6 @@ def init_state():
         "bot_score": 0,
         "user_used_bomb": False,
         "bot_used_bomb": False,
-        "history": [],
         "game_over": False
     }
 
@@ -66,6 +65,24 @@ def resolve_round(user_move, bot_move):
         return "bot"
 
 
+def update_game_state(state, winner, user_move, bot_move):
+
+    if winner == "user":
+        state["user_score"] += 1
+    elif winner == "bot":
+        state["bot_score"] += 1
+
+    if user_move == "bomb":
+        state["user_used_bomb"] = True
+    elif bot_move == "bomb":
+        state["bot_used_bomb"] = True
+
+    state["round_number"] += 1
+
+    if state["round_number"] > 3:
+        state["game_over"] = True
+
+    return state
 
 
 
@@ -86,3 +103,6 @@ def run_game():
         else:
             bot_move = choose_bot_move(state["bot_used_bomb"])
             winner = resolve_round(user_input, bot_move)
+
+        state = update_game_state(state, winner, user_input, bot_move)
+        
