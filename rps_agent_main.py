@@ -1,5 +1,7 @@
 import random
 
+from google.adk.agents.llm_agent import Agent
+
 # Creating function for setting initial state of the game:
 def init_state():
     init_dict = {
@@ -85,6 +87,23 @@ def update_game_state(state, winner, user_move, bot_move):
     return state
 
 
+root_agent = Agent(
+    name = "rps_plus_referee",
+    model="gemini-1.5-flash",
+    description=(
+        "Deterministic referee agent for Rock–Paper–Scissors–Plus. "
+        "Responsible for validating moves, resolving rounds, and "
+        "updating game state using explicit tools."
+    ),
+    tools=[
+        validate_moves,
+        choose_bot_move,
+        resolve_round,
+        update_game_state,
+    ],
+)
+
+
 
 def run_game():
     state = init_state()
@@ -105,4 +124,3 @@ def run_game():
             winner = resolve_round(user_input, bot_move)
 
         state = update_game_state(state, winner, user_input, bot_move)
-        
