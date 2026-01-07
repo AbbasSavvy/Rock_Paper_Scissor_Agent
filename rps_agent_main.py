@@ -1,3 +1,5 @@
+import random
+
 # Creating function for setting initial state of the game:
 def init_state():
     init_dict = {
@@ -6,6 +8,7 @@ def init_state():
         "bot_score": 0,
         "user_used_bomb": False,
         "bot_used_bomb": False,
+        "history": [],
         "game_over": False
     }
 
@@ -32,6 +35,13 @@ def validate_moves(user_move, bomb_used):
     return {"move_valid": True}
 
 
+def choose_bot_move(bot_used_bomb):
+    if not bot_used_bomb:
+        moves = ["rock", "paper", "scissors", "bomb"]
+    else:
+        moves = ["rock", "paper", "scissors"]
+
+    return random.choice(moves)
 
 
 
@@ -47,3 +57,5 @@ def run_game():
 
         if not validation["move_valid"]:
             print(f"Invalid move: {validation['reason']}")
+            bot_move = choose_bot_move(state["bot_used_bomb"])
+            winner = "bot"
