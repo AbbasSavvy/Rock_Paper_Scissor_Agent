@@ -7,3 +7,7 @@ def init_state():
         "user_used_bomb": False,
         "bot_used_bomb": False
     }
+
+
+def display_rules():
+    print()
