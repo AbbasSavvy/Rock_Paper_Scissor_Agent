@@ -44,3 +44,6 @@ def run_game():
         user_input = input("Your move: ").strip().lower()
 
         validation = validate_moves(user_input, state["user_used_bomb"])
+
+        if not validation["move_valid"]:
+            print(f"Invalid move: {validation['reason']}")
